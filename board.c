@@ -1,8 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "board.h"
 
-int main(void){
+Board* update_board(Board*){
     
     return 0;
 }
