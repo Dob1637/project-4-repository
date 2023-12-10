@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "sum.h"
+#include "board.h"
 
 int main(void){
     Board *conway;
