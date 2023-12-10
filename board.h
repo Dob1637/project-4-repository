@@ -3,10 +3,11 @@
 
 typedef struct Board{
     char *grid;
+    char **gridrows;
     int nrows;
     int ncols;
 }
 
-Board* update_board(Board*);
+Board* update_board(Board* oldBoard);
 
 #endif
