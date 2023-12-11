@@ -19,12 +19,12 @@ int main(void){
 	conway->gridrows[i] = conway->grid + i * conway->ncols;
     }
 
-    scanf("%d", &numiterations);
-
+    scanf("%d\n", &numiterations);
+    int maxn = conway->ncols * 3;
     for (int i = 0; i < conway->nrows; i++)
     {
-	char *temp = (char *) malloc(sizeof(char)*conway->ncols*2+1);
-	temp = fgets(temp, conway->ncols * 2, stdin);
+	char *temp = (char *) malloc(sizeof(char)*maxn);
+	temp = fgets(temp, conway->ncols * 3, stdin);
 	for (int j = 0; j < conway->ncols * 2; j += 2)
 	{
 	    conway->gridrows[i][j/2] = temp[j];
