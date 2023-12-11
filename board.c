@@ -9,7 +9,7 @@ Board* update_board(Board* oldBoard)
     newBoard->nrows = oldBoard->nrows;
     newBoard->ncols = oldBoard->ncols;
     newBoard->grid = (char *) malloc(sizeof(char)*newBoard->nrows*newBoard->ncols);
-    newBoard->gridrows = (char**) malloc(sizeof(char)*newBoard->nrows);
+    newBoard->gridrows = (char**) malloc(sizeof(char *)*newBoard->nrows);
     int numg = 0;
     int numr = 0;
     int numneighbor = 0;
