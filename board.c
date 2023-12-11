@@ -144,7 +144,7 @@ Board* update_board(Board* oldBoard)
 		    newBoard->gridrows[i][j] = 'g';
 		}
 	    }
-	    if (2 < numneighbor && numneighbor < 3)
+	    if (1 < numneighbor && numneighbor < 4)
 	    {
 		newBoard->gridrows[i][j] = oldBoard->gridrows[i][j];
 	    }
