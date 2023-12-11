@@ -357,7 +357,6 @@ Board* update_board(Board* oldBoard)
 		    newBoard->gridrows[i][j] = 'g';
 		}
 	    }
-	    printf("(%d, %d)\nneighbors = %d\nred = %d\ngreen = %d\n", i, j, numneighbor, numr, numg);
 	}
     }
     
