@@ -1,4 +1,5 @@
 #include "board.h"
+#include <stdlib.h>
 
 Board* update_board(Board* oldBoard)
 {
@@ -14,7 +15,7 @@ Board* update_board(Board* oldBoard)
     int numneighbor = 0;
     for (int i = 0; i < newBoard->nrows; i++)
     {
-	gridrows[i] = grid + i * newBoard->ncols;
+	newBoard->gridrows[i] = newBoard->grid + i * newBoard->ncols;
     }
 
     for (int i = 0; i < newBoard->nrows; i++)
@@ -24,130 +25,134 @@ Board* update_board(Board* oldBoard)
 	    numg = 0;
 	    numr = 0;
 	    numneighbor = 0;
-	    if 0 < i - 1 < oldBoard->nrows && 0 < j - 1 < oldBoard->ncols
+	    if ((0 < (i - 1) && (i - 1) < oldBoard->nrows) && (0 < (j - 1) && (j - 1) < oldBoard->ncols))
 	    {
-		if oldBoard->gridrows[i - 1][j - 1] == 'r'
+		if (oldBoard->gridrows[i - 1][j - 1] == 'r')
 		{
 		    numr += 1;
 		    numneighbor += 1;
 		}
-		if oldBoard->gridrows[i - 1][j - 1] == 'g'
+		if (oldBoard->gridrows[i - 1][j - 1] == 'g')
 		{
 		    numg += 1;
 		    numneighbor += 1;
 		}
 	    }
-	    if 0 < i - 1 < oldBoard->nrows && 0 < j < oldBoard->ncols
+	    if ((0 < (i - 1) && (i - 1)< oldBoard->nrows) && (0 < j && j < oldBoard->ncols))
 	    {
-		if oldBoard->gridrows[i - 1][j] == 'r'
+		if (oldBoard->gridrows[i - 1][j] == 'r')
 		{
 		    numr += 1;
 		    numneighbor += 1;
 		}
-		if oldBoard->gridrows[i - 1][j] == 'g'
+		if (oldBoard->gridrows[i - 1][j] == 'g')
 		{
 		    numg += 1;
 		    numneighbor += 1;
 		}
 	    }
-	    if 0 < i - 1 < oldBoard->nrows && 0 < j + 1 < oldBoard->ncols
+	    if ((0 < (i - 1) && (i - 1) < oldBoard->nrows) && (0 < (j + 1) && (j + 1) < oldBoard->ncols))
 	    {
-		if oldBoard->gridrows[i - 1][j + 1] == 'r'
+		if (oldBoard->gridrows[i - 1][j + 1] == 'r')
 		{
 		    numr += 1;
 		    numneighbor += 1;
 		}
-		if oldBoard->gridrows[i - 1][j + 1] == 'g'
+		if (oldBoard->gridrows[i - 1][j + 1] == 'g')
 		{
 		    numg += 1;
 		    numneighbor += 1;
 		}
 	    }
-	    if 0 < i < oldBoard->nrows && 0 < j - 1 < oldBoard->ncols
+	    if ((0 < i && i < oldBoard->nrows) && (0 < (j - 1) && (j - 1) < oldBoard->ncols))
 	    {
-		if oldBoard->gridrows[i][j - 1] == 'r'
+		if (oldBoard->gridrows[i][j - 1] == 'r')
 		{
 		    numr += 1;
 		    numneighbor += 1;
 		}
-		if oldBoard->gridrows[i][j - 1] == 'g'
+		if (oldBoard->gridrows[i][j - 1] == 'g')
 		{
 		    numg += 1;
 		    numneighbor += 1;
 		}
 	    }
-	    if 0 < i < oldBoard->nrows && 0 < j + 1 < oldBoard->ncols
+	    if ((0 < i && i < oldBoard->nrows) && (0 < (j + 1) && (j + 1) < oldBoard->ncols))
 	    {
-		if oldBoard->gridrows[i][j + 1] == 'r'
+		if (oldBoard->gridrows[i][j + 1] == 'r')
 		{
 		    numr += 1;
 		    numneighbor += 1;
 		}
-		if oldBoard->gridrows[i][j + 1] == 'g'
+		if (oldBoard->gridrows[i][j + 1] == 'g')
 		{
 		    numg += 1;
 		    numneighbor += 1;
 		}
 	    }
-	    if 0 < i + 1 < oldBoard->nrows && 0 < j - 1 < oldBoard->ncols
+	    if ((0 < (i + 1) && (i + 1) < oldBoard->nrows) && (0 < (j - 1) && (j - 1) < oldBoard->ncols))
 	    {
-		if oldBoard->gridrows[i + 1][j - 1] == 'r'
+		if (oldBoard->gridrows[i + 1][j - 1] == 'r')
 		{
 		    numr += 1;
 		    numneighbor += 1;
 		}
-		if oldBoard->gridrows[i + 1][j - 1] == 'g'
+		if (oldBoard->gridrows[i + 1][j - 1] == 'g')
 		{
 		    numg += 1;
 		    numneighbor += 1;
 		}
 	    }
-	    if 0 < i + 1 < oldBoard->nrows && 0 < j < oldBoard->ncols
+	    if ((0 < (i + 1) && (i + 1) < oldBoard->nrows) && (0 < j && j < oldBoard->ncols))
 	    {
-		if oldBoard->gridrows[i + 1][j] == 'r'
+		if (oldBoard->gridrows[i + 1][j] == 'r')
 		{
 		    numr += 1;
 		    numneighbor += 1;
 		}
-		if oldBoard->gridrows[i + 1][j] == 'g'
+		if (oldBoard->gridrows[i + 1][j] == 'g')
 		{
 		    numg += 1;
 		    numneighbor += 1;
 		}
 	    }
-	    if 0 < i + 1 < oldBoard->nrows && 0 < j + 1 < oldBoard->ncols
+	    if ((0 < (i + 1) && (i + 1) < oldBoard->nrows) && (0 < (j + 1) && (j + 1) < oldBoard->ncols))
 	    {
-		if oldBoard->gridrows[i + 1][j + 1] == 'r'
+		if (oldBoard->gridrows[i + 1][j + 1] == 'r')
 		{
 		    numr += 1;
 		    numneighbor += 1;
 		}
-		if oldBoard->gridrows[i + 1][j + 1] == 'g'
+		if (oldBoard->gridrows[i + 1][j + 1] == 'g')
 		{
 		    numg += 1;
-		    numneighbot += 1;
+		    numneighbor += 1;
 		}
 	    }
-	    if numneighbors > 3 || numneighbors < 2
+	    if (numneighbor > 3 || numneighbor < 2)
 	    {
 		newBoard->gridrows[i][j] = 'x';
 	    }
-	    if oldBoard->gridrows[i][j] == 'x' && numneighbors == 3
+	    if (oldBoard->gridrows[i][j] == 'x' && numneighbor == 3)
 	    {
-		if numr > numg
+		if (numr > numg)
 		{
-		    newBoard->gridrows[i][j] = 'r'
+		    newBoard->gridrows[i][j] = 'r';
 		}
 		else
 		{
-		    newBoard->gridrows[i][j] = 'g'
+		    newBoard->gridrows[i][j] = 'g';
 		}
+	    }
+	    if (2 < numneighbor && numneighbor < 3)
+	    {
+		newBoard->gridrows[i][j] = oldBoard->gridrows[i][j];
 	    }
 	}
     }
     
-    free(oldBoard->gridrows)
-    free(oldBoard->grid)
-    free(oldBoard)
+    free(oldBoard->gridrows);
+    free(oldBoard->grid);
+    free(oldBoard);
     return newBoard;
 }

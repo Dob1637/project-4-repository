@@ -6,7 +6,7 @@ typedef struct Board{
     char **gridrows;
     int nrows;
     int ncols;
-}
+}Board;
 
 Board* update_board(Board* oldBoard);
 

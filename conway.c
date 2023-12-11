@@ -12,21 +12,21 @@ int main(void){
 
     for (int i = 0; i < conway->nrows; i++)
     {
-	conway->gridrows[i] = conway->grid + i * ncols;
+	conway->gridrows[i] = conway->grid + i * conway->ncols;
     }
 
-    for (int i = 0; i < conway->rows; i++)
+    for (int i = 0; i < conway->nrows; i++)
     {
-	char *temp = (char *) malloc(sizeof(char)*ncol*2);
+	char *temp = (char *) malloc(sizeof(char)*conway->ncols*2);
 	temp = fgets(temp, conway->ncols * 2, stdin);
-	for (int j = 0; j < conway->ncols * 2; j + 2)
+	for (int j = 0; j < conway->ncols * 2; j += 2)
 	{
 	    conway->gridrows[i][j/2] = temp[j];
 	}
 	free(temp);
     }
 
-    scanf("%d", &numiterations)
+    scanf("%d", &numiterations);
 
     for (int i = 0; i < numiterations; i++)
     {
@@ -38,13 +38,13 @@ int main(void){
 
     for (int i = 0; i < conway->nrows; i++)
     {
-	for (int j = 0; j < conway->ncols; j++);
+	for (int j = 0; j < conway->ncols; j++)
 	{
-	    if conway->gridrows[i][j] == 'r'
+	    if (conway->gridrows[i][j] == 'r')
 	    {
 		numr += 1;
 	    }
-	    if conway->gridrows[i][j] == 'g'
+	    if (conway->gridrows[i][j] == 'g')
 	    {
 		numg += 1;
 	    }
@@ -52,6 +52,10 @@ int main(void){
     }
 
     printf("green: %d, red: %d\n", numg, numr);
+    
+    free(conway->gridrows);
+    free(conway->grid);
+    free(conway);
     
     return 0;
 }
