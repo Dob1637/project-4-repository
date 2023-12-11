@@ -1,5 +1,6 @@
 #include "board.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 Board* update_board(Board* oldBoard)
 {
@@ -25,7 +26,7 @@ Board* update_board(Board* oldBoard)
 	    numg = 0;
 	    numr = 0;
 	    numneighbor = 0;
-	    if ((0 < (i - 1) && (i - 1) < oldBoard->nrows) && (0 < (j - 1) && (j - 1) < oldBoard->ncols))
+	    if ((-1 < (i - 1) && (i - 1) < oldBoard->nrows) && (-1 < (j - 1) && (j - 1) < oldBoard->ncols))
 	    {
 		if (oldBoard->gridrows[i - 1][j - 1] == 'r')
 		{
@@ -38,7 +39,7 @@ Board* update_board(Board* oldBoard)
 		    numneighbor += 1;
 		}
 	    }
-	    if ((0 < (i - 1) && (i - 1)< oldBoard->nrows) && (0 < j && j < oldBoard->ncols))
+	    if ((-1 < (i - 1) && (i - 1)< oldBoard->nrows) && (-1 < j && j < oldBoard->ncols))
 	    {
 		if (oldBoard->gridrows[i - 1][j] == 'r')
 		{
@@ -51,7 +52,7 @@ Board* update_board(Board* oldBoard)
 		    numneighbor += 1;
 		}
 	    }
-	    if ((0 < (i - 1) && (i - 1) < oldBoard->nrows) && (0 < (j + 1) && (j + 1) < oldBoard->ncols))
+	    if ((-1 < (i - 1) && (i - 1) < oldBoard->nrows) && (-1 < (j + 1) && (j + 1) < oldBoard->ncols))
 	    {
 		if (oldBoard->gridrows[i - 1][j + 1] == 'r')
 		{
@@ -64,7 +65,7 @@ Board* update_board(Board* oldBoard)
 		    numneighbor += 1;
 		}
 	    }
-	    if ((0 < i && i < oldBoard->nrows) && (0 < (j - 1) && (j - 1) < oldBoard->ncols))
+	    if ((-1 < i && i < oldBoard->nrows) && (-1 < (j - 1) && (j - 1) < oldBoard->ncols))
 	    {
 		if (oldBoard->gridrows[i][j - 1] == 'r')
 		{
@@ -77,7 +78,7 @@ Board* update_board(Board* oldBoard)
 		    numneighbor += 1;
 		}
 	    }
-	    if ((0 < i && i < oldBoard->nrows) && (0 < (j + 1) && (j + 1) < oldBoard->ncols))
+	    if ((-1 < i && i < oldBoard->nrows) && (-1 < (j + 1) && (j + 1) < oldBoard->ncols))
 	    {
 		if (oldBoard->gridrows[i][j + 1] == 'r')
 		{
@@ -90,7 +91,7 @@ Board* update_board(Board* oldBoard)
 		    numneighbor += 1;
 		}
 	    }
-	    if ((0 < (i + 1) && (i + 1) < oldBoard->nrows) && (0 < (j - 1) && (j - 1) < oldBoard->ncols))
+	    if ((-1 < (i + 1) && (i + 1) < oldBoard->nrows) && (-1 < (j - 1) && (j - 1) < oldBoard->ncols))
 	    {
 		if (oldBoard->gridrows[i + 1][j - 1] == 'r')
 		{
@@ -103,7 +104,7 @@ Board* update_board(Board* oldBoard)
 		    numneighbor += 1;
 		}
 	    }
-	    if ((0 < (i + 1) && (i + 1) < oldBoard->nrows) && (0 < j && j < oldBoard->ncols))
+	    if ((-1 < (i + 1) && (i + 1) < oldBoard->nrows) && (-1 < j && j < oldBoard->ncols))
 	    {
 		if (oldBoard->gridrows[i + 1][j] == 'r')
 		{
@@ -116,7 +117,7 @@ Board* update_board(Board* oldBoard)
 		    numneighbor += 1;
 		}
 	    }
-	    if ((0 < (i + 1) && (i + 1) < oldBoard->nrows) && (0 < (j + 1) && (j + 1) < oldBoard->ncols))
+	    if ((-1 < (i + 1) && (i + 1) < oldBoard->nrows) && (-1 < (j + 1) && (j + 1) < oldBoard->ncols))
 	    {
 		if (oldBoard->gridrows[i + 1][j + 1] == 'r')
 		{
@@ -128,6 +129,10 @@ Board* update_board(Board* oldBoard)
 		    numg += 1;
 		    numneighbor += 1;
 		}
+	    }
+	    if (1 < numneighbor && numneighbor < 4)
+	    {
+		newBoard->gridrows[i][j] = oldBoard->gridrows[i][j];
 	    }
 	    if (numneighbor > 3 || numneighbor < 2)
 	    {
@@ -143,10 +148,6 @@ Board* update_board(Board* oldBoard)
 		{
 		    newBoard->gridrows[i][j] = 'g';
 		}
-	    }
-	    if (1 < numneighbor && numneighbor < 4)
-	    {
-		newBoard->gridrows[i][j] = oldBoard->gridrows[i][j];
 	    }
 	}
     }
